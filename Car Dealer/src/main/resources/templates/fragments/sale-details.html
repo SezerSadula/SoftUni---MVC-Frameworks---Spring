@@ -1,0 +1,23 @@
+<table xmlns:th="http://www.w3.org/1999/xhtml"
+       class="table mt-2 mb-2 center-block w-100 mx-auto"
+       th:fragment="sale (title, sale)">
+    <h2 class="header mt-2 mb-2 center-block text-center w-100 mx-auto" th:text="*{title}"/>
+    <thead>
+    <tr>
+        <th scope="col" th:text="#{sale.table-header.car-base-price}"/>
+        <th scope="col" th:text="#{sale.table-header.sale-discount}"/>
+        <th scope="col" th:text="#{sale.table-header.young-driver-discount}"/>
+        <th scope="col" th:text="#{sale.table-header.total-discount}"/>
+        <th scope="col" th:text="#{sale.table-header.car-final-price}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="*{#numbers.formatDecimal(sale.carBasePrice, 1, 'DEFAULT', 2, 'DEFAULT')}"/>
+        <td th:text="|*{#numbers.formatDecimal(sale.discount, 1, 'DEFAULT', 2, 'DEFAULT')} %|"/>
+        <td th:text="|*{#numbers.formatDecimal(sale.youngDriverDiscount, 1, 'DEFAULT', 2, 'DEFAULT')} %|"/>
+        <td th:text="|*{#numbers.formatDecimal(sale.totalDiscount, 1, 'DEFAULT', 2, 'DEFAULT')} %|"/>
+        <td th:text="*{#numbers.formatDecimal(sale.carFinalPrice, 1, 'DEFAULT', 2, 'DEFAULT')}"/>
+    </tr>
+    </tbody>
+</table>

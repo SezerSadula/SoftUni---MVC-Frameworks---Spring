@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="main-content">
+        <h1 class="text-center" th:text="|Welcome, ${username}|"></h1>
+        <hr class="hr-2 bg-resev">
+        <h2 class="text-center">Thymeleaf Security Demonstration</h2>
+        <h3 sec:authorize="hasAuthority('ADMIN')">DRASTYEEE</h3>
+    </main>
+</div>
+</body>
+</html>

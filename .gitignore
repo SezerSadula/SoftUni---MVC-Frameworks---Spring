@@ -1,0 +1,18 @@
+#.gitignore
+
+#**/Demos/
+#*.pptx
+#*.zip
+*.7z
+*.rar
+
+### IntelliJ IDEA ###
+**/out/
+**/target/
+**/.idea/*
+#!**/.idea/misc.xml
+#!**/.idea/modules.xml
+*.iws
+*.iml
+*.ipr
+*.class

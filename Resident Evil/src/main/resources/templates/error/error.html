@@ -1,0 +1,6 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml"
+     class="container-fluid"
+     th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+    <h1 class="text-center text-danger" th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|"/>
+    <p class="jumbotron text-center text-danger" th:text="${viewModel}"/>
+</div>

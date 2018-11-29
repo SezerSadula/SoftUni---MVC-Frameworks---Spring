@@ -1,0 +1,13 @@
+<ul xmlns:th="http://www.thymeleaf.org">
+    <!--/*@thymesVar id="viewModel" type="org.softuni.demo.entities.Student[]"*/-->
+    <!--/*@thymesVar id="student" type="org.softuni.demo.entities.Student"*/-->
+    <th:block th:each="student : ${viewModel}" th:object="${student}">
+        <li>
+            <div>
+                <a th:href="@{/students/details/{id}(id=*{id})}">
+                    <h3 th:text="*{name}"></h3>
+                </a>
+            </div>
+        </li>
+    </th:block>
+</ul>

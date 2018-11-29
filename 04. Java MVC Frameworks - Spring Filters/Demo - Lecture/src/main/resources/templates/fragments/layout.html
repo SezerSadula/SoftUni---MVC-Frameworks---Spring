@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<header>
+    This is my header
+</header>
+<main th:include="${viewName}"/>
+<footer>
+    Copyright &copy;
+</footer>
+</body>
+</html>

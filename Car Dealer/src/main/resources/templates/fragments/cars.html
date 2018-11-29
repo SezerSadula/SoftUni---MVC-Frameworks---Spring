@@ -1,0 +1,28 @@
+<table class="table mt-2 mb-2 center-block w-100 mx-auto"
+       xmlns:th="http://www.w3.org/1999/xhtml"
+       th:fragment="cars (title, cars)">
+    <h2 class="header mt-2 mb-2 center-block text-center w-100 mx-auto" th:text="*{title}"/>
+    <thead>
+    <tr>
+        <th scope="col" th:text="#{cars.table-header.make}"/>
+        <th scope="col" th:text="#{cars.table-header.model}"/>
+        <th scope="col" th:text="#{cars.table-header.travelled-distance}"/>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="car : *{cars}" th:object="${car}">
+        <tr>
+            <td><a th:href="@{/cars/{make} (make=*{make})}" th:text="*{make}"/></td>
+            <td th:text="*{model}"/>
+            <td th:text="*{travelledDistance}"/>
+            <td>
+                <form th:method="get" th:action="@{/cars/{carId}/parts (carId=*{id})}">
+                    <button type="submit" class="btn btn-light btn-sm border-dark"
+                            th:text="#{cars.table-button.details}"/>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>

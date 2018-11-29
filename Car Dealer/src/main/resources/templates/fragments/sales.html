@@ -1,0 +1,40 @@
+<table xmlns:th="http://www.w3.org/1999/xhtml"
+       class="table mt-2 mb-2 center-block w-100 mx-auto"
+       th:fragment="sales (title, sales)">
+    <h2 class="header mt-2 mb-2 center-block text-center w-100 mx-auto" th:text="*{title}"/>
+    <thead>
+    <tr>
+        <th scope="col" th:text="#{sales.all.table-header.car-make}"/>
+        <th scope="col" th:text="#{sales.all.table-header.car-model}"/>
+        <th scope="col" th:text="#{sales.all.table-header.customer-name}"/>
+        <th scope="col" th:text="#{sales.all.table-header.car-base-price}"/>
+        <th scope="col" th:text="#{sales.all.table-header.sale-base-discount}"/>
+        <th scope="col" th:text="#{sales.all.table-header.sale-total-discount}"/>
+        <th scope="col" th:text="#{sales.all.table-header.car-final-price}"/>
+        <th/>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="sale : *{sales}" th:object="${sale}">
+        <tr>
+            <td><a th:href="@{/cars/{carMake} (carMake=*{carMake})}" th:text="*{carMake}"/></td>
+            <td th:text="*{carModel}"/>
+            <td><a th:href="@{/customers/{customerId} (customerId=*{customerId})}" th:text="*{customerName}"/></td>
+            <td th:text="*{#numbers.formatDecimal(carBasePrice, 1, 'DEFAULT', 2, 'DEFAULT')}"/>
+            <td>
+                <a th:href="@{/sales/discounted/{percentage}
+                (percentage=*{#numbers.formatDecimal(discount, 1, 'DEFAULT', 0, 'DEFAULT')})}"
+                   th:text="|*{#numbers.formatDecimal(discount, 1, 'DEFAULT', 2, 'DEFAULT')} %|"/>
+            </td>
+            <td th:text="|*{#numbers.formatDecimal(totalDiscount, 1, 'DEFAULT', 2, 'DEFAULT')} %|"/>
+            <td th:text="*{#numbers.formatDecimal(carFinalPrice, 1, 'DEFAULT', 2, 'DEFAULT')}"/>
+            <td>
+                <form th:method="get" th:action="@{/sales/{sellId} (sellId=*{id})}">
+                    <button type="submit" class="btn btn-light btn-sm border-dark"
+                            th:text="#{sales.table-button.details}"/>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>

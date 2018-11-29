@@ -1,0 +1,23 @@
+<table class="table mt-2 mb-2 center-block w-100 mx-auto"
+       xmlns:th="http://www.w3.org/1999/xhtml"
+       th:fragment="suppliers (showType, title)">
+    <h2 class="header mt-2 mb-2 center-block text-center w-100 mx-auto" th:text="${title}"/>
+    <thead>
+    <tr>
+        <th scope="col" th:text="#{suppliers.table-header.id}"/>
+        <th scope="col" th:text="#{suppliers.table-header.name}"/>
+        <th scope="col" th:text="#{suppliers.table-header.importer}" th:if="${showType}"/>
+        <th scope="col" th:text="#{suppliers.table-header.parts-supplied}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="supplier : ${viewModel}" th:object="${supplier}">
+        <tr>
+            <td th:text="*{id}"/>
+            <td th:text="*{name}"/>
+            <th th:text="*{importer}" th:if="${showType}"/>
+            <td th:text="*{suppliedPartsCount}"/>
+        </tr>
+    </th:block>
+    </tbody>
+</table>

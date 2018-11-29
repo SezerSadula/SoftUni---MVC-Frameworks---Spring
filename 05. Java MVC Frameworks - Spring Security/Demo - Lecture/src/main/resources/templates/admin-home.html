@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="main-content">
+        <h1 class="text-center" th:text="|Hello, Administrator - ${username}|"></h1>
+        <hr class="hr-2 bg-resev">
+        <h2>Authorities</h2>
+        <p class="text-center w-75" th:text="${#strings.listJoin(authorities, ', ')}"></p>
+    </main>
+</div>
+</body>
+</html>

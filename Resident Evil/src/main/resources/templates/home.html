@@ -1,0 +1,10 @@
+<h1 class="header">Home!</h1>
+
+Authenticated username:
+<div sec:authentication="name"></div>
+
+<div sec:authorize="hasRole('ADMIN')">
+    This content is only shown to administrators.
+</div>
+
+

@@ -1,0 +1,19 @@
+<table class="table mt-2 mb-2 center-block w-100 mx-auto"
+       xmlns:th="http://www.w3.org/1999/xhtml"
+       th:fragment="parts (title, parts)">
+    <h2 class="header mt-2 mb-2 center-block text-center w-100 mx-auto" th:text="*{title}"/>
+    <thead>
+    <tr>
+        <th scope="col" th:text="#{parts.table-header.name}"/>
+        <th scope="col" th:text="#{parts.table-header.price}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="part : ${parts}" th:object="${part}">
+        <tr>
+            <td th:text="*{name}"/>
+            <td th:text="*{price}"/>
+        </tr>
+    </th:block>
+    </tbody>
+</table>

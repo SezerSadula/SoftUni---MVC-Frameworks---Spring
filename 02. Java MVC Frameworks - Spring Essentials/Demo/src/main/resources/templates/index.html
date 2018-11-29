@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<form th:method="post" th:action="@{/students/create}">
+    <input type="text" name="name"/>
+    <input type="number" name="willToLive"/>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

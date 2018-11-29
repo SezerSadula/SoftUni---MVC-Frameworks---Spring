@@ -1,0 +1,17 @@
+<table class="table mt-3 mb-5 center-block w-75 mx-auto" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2 class="header mt-3 mb-4 center-block w-75 mx-auto" th:text="#{users.all.title}"/>
+    <thead>
+    <tr>
+        <th scope="col" th:text="#{users.all.table-header.username}"/>
+        <th scope="col" th:text="#{users.all.table-header.role}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="user : ${viewModel}" th:object="${user}">
+        <tr>
+            <td th:text="*{username}"/>
+            <td th:text="*{highestAuthority}"/>
+        </tr>
+    </th:block>
+    </tbody>
+</table>

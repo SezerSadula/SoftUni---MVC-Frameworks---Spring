@@ -1,0 +1,32 @@
+<th:block th:fragment="navbar-admin">
+    <nav class="navbar navbar-expand-lg navbar-light bg-resev">
+        <a class="navbar-brand text-white" href="/">Index</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+            <ul class="navbar-nav functional-nav" th:if="${#session} AND ${#session.getAttribute('user-role')}">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/admin/home"
+                       th:if="${#strings.equals(#session.getAttribute('user-role'), 'ADMIN')}">Home</a>
+                    <a class="nav-link text-light" href="/home"
+                       th:if="${#strings.equals(#session.getAttribute('user-role'), 'USER')}">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav user-data-nav" th:unless="${#session?.getAttribute('user-role')}">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/register">Register</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav user-data-nav" th:if="${#session} AND ${#session.getAttribute('user-role')}">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</th:block>

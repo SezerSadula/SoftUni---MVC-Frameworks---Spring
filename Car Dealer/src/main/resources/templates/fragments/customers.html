@@ -1,0 +1,21 @@
+<table xmlns:th="http://www.w3.org/1999/xhtml"
+       class="table mt-2 mb-2 center-block w-100 mx-auto"
+       th:fragment="customers (title, customers)">
+    <h2 class="header mt-2 mb-2 center-block text-center w-100 mx-auto" th:text="*{title}"/>
+    <thead>
+    <tr>
+        <th scope="col" th:text="#{customers.all.table-header.name}"/>
+        <th scope="col" th:text="#{customers.all.table-header.birth-date}"/>
+        <th scope="col" th:text="#{customers.all.table-header.young-driver}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="customer : *{customers}" th:object="${customer}">
+        <tr>
+            <td><a th:href="@{/customers/{customerId} (customerId=*{id})}" th:text="*{name}"/></td>
+            <td th:text="${#temporals.format(customer.getBirthDate(), 'dd-MMM-yyyy')}"/>
+            <td th:text="*{youngDriver}"/>
+        </tr>
+    </th:block>
+    </tbody>
+</table>

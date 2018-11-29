@@ -1,0 +1,10 @@
+<form xmlns:th="http://www.thymeleaf.org" th:method="post"
+      th:action="@{/students/create}">
+    <input type="text" name="name"/>
+    <input type="number" name="willToLive"/><br/>
+    Num1 <input type="number" maxlength="5" th:value="${num1}"/>
+    Num2 <input type="number" maxlength="5" th:value="${num2}"/><br/>
+    Sum <input type="number" name="sum"/><br/>
+    <button type="submit">Submit</button>
+</form>
+<a href="/students/all">All students</a>

@@ -1,0 +1,33 @@
+<th:block xmlns:th="http://www.w3.org/1999/xhtml"
+          th:fragment="userRegisterForm (action, title)">
+    <form th:object="${viewModel}"
+          th:action="${action}"
+          method="POST"
+          class="mt-3 mb-5 center-block w-75 mx-auto">
+
+        <h2 class="header mb-4" th:text="${title}"/>
+
+        <div class="form-group">
+            <label th:for="${#ids.next('username')}" th:text="#{users.register.username}"></label>
+            <input type="text" class="form-control" minlength="4" maxlength="16" th:field="*{username}"/>
+            <p class="help-block error-text" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"/>
+        </div>
+
+        <div class="form-group">
+            <label th:for="${#ids.next('password')}" th:text="#{users.register.password}"></label>
+            <input type="password" class="form-control" minlength="4" maxlength="16" th:field="*{password}"/>
+            <p class="help-block error-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/>
+        </div>
+
+        <div class="form-group">
+            <label th:for="${#ids.next('confirmPassword')}" th:text="#{users.register.confirmPassword}"></label>
+            <input type="password" class="form-control" minlength="3" maxlength="16" th:field="*{confirmPassword}"/>
+            <p class="help-block error-text" th:if="${#fields.hasErrors('confirmPassword')}"
+               th:errors="*{confirmPassword}"/>
+        </div>
+
+        <div class="form-actions mx-auto text-center">
+            <button type="submit" class="btn btn-primary my-button" th:text="#{users.register.button}"/>
+        </div>
+    </form>
+</th:block>

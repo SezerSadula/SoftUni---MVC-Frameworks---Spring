@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+</div>
+<h3 class="text-lg-center" th:if="${#session}"
+    th:text="|Logged as ${#session.getAttribute('user-username')}, role is ${#session.getAttribute('user-role')}|"/>
+<h3 class="text-lg-center" th:unless="${#session}" th:text="|GUEST|"/>
+<h1>Class @PreAuthenticate Demo</h1>
+<h2>Class level annotation:</h2>
+<p>@PreAuthenticate(loggedIn = true, role = UserRole.ADMIN)</p>
+<ul>
+    <li>
+        <a href="/test/class-annotation-admin"><h3>Class annotation - Only ADMIN should be able to access this</h3></a>
+    </li>
+    <p>No @PreAuthenticate annotation used on method level</p>
+    <li>
+        <a href="/test/method-annotation-guest"><h3>Method annotation overrides class annotation - route is accessible
+            by GUEST only</h3></a>
+    </li>
+    <p>@PreAuthenticate(loggedIn = false)</p>
+    <li>
+        <a href="/test/method-annotation-user"><h3>Method annotation overrides class annotation - route is accessible by
+            both USER and ADMIN</h3></a>
+    </li>
+    <p>@PreAuthenticate(loggedIn = true, role = UserRole.USER)</p>
+    <a href=></a>
+</ul>
+</body>
+</html>
